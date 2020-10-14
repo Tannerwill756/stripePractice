@@ -23,7 +23,7 @@ const CheckoutForm = () => {
       const {id} = paymentMethod
 
       try{
-        const res = await axios.post("http://98.242.245.160:8000/pay", {id, amount: 1099, quantity: 69, email: '123@123.com'})
+        const res = await axios.post("http://98.242.245.160:8000/pay", {id, amount: 1099, quantity: 69, email: 'tannerwill756@gmail.com'})
         const clientSecret = res.data['client_secret']
         const result = await stripe.confirmCardPayment(clientSecret, {
           payment_method: {
@@ -38,7 +38,7 @@ const CheckoutForm = () => {
           console.log(result.error.message)
         }else{
           if(result.paymentIntent.status === 'succeeded'){
-            console.log('money in the bank')
+            console.log(result.paymentIntent)
           }
         }
       }catch(error){
